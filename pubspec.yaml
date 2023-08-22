@@ -38,6 +38,7 @@ dependencies:
   font_awesome_flutter: ^10.5.0
   google_fonts: ^5.1.0
   swipeable_card_stack: ^0.0.5
+  cached_network_image: ^3.2.3
 
 dev_dependencies:
   flutter_test:

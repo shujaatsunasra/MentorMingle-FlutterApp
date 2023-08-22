@@ -1,14 +1,12 @@
-// ignore_for_file: library_private_types_in_public_api, prefer_final_fields
-
 import 'package:flutter/material.dart';
-
 import '../pages/detailed_page.dart';
 import '../theme.dart';
 
 class SwipableCardStackWidget extends StatefulWidget {
   final List<CardData> cardDataList;
 
-  const SwipableCardStackWidget({super.key, required this.cardDataList});
+  const SwipableCardStackWidget({Key? key, required this.cardDataList})
+      : super(key: key);
 
   @override
   _SwipableCardStackWidgetState createState() =>
@@ -23,7 +21,7 @@ class _SwipableCardStackWidgetState extends State<SwipableCardStackWidget> {
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance.addPostFrameCallback((_) {
+    WidgetsBinding.instance?.addPostFrameCallback((_) {
       _animateEntrance();
     });
   }
@@ -59,7 +57,7 @@ class _SwipableCardStackWidgetState extends State<SwipableCardStackWidget> {
     return Column(
       children: [
         SizedBox(
-          height: 400, // Adjust as needed
+          height: 400,
           child: GestureDetector(
             onPanUpdate: (details) {
               if (details.delta.dx > 0) {
@@ -98,51 +96,56 @@ class _SwipableCardStackWidgetState extends State<SwipableCardStackWidget> {
 class CardItem extends StatelessWidget {
   final CardData cardData;
 
-  const CardItem({
-    super.key,
-    required this.cardData,
-  });
+  const CardItem({Key? key, required this.cardData}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Card(
-      elevation: 0,
-      shape: const BeveledRectangleBorder(
-          borderRadius: BorderRadius.only(bottomRight: Radius.circular(85))),
-      color: Colors.white60,
+      elevation: 5, // Add a touch of depth to your cards
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(20), // Rounded corners for elegance
+      ),
+      color: AppTheme.kPrimaryColor, // Customize your card color
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Expanded(
-            child: Image.asset(
-              cardData.imagePath,
-              fit: BoxFit.cover,
+            child: ClipRRect(
+              borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+              child: Image.asset(
+                cardData.imagePath,
+                fit: BoxFit.cover,
+              ),
             ),
           ),
           Padding(
-            padding: const EdgeInsets.all(8),
+            padding: const EdgeInsets.all(12), // Add some spacing
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
                   cardData.subHeading,
-                  style: TextStyle(fontSize: 16, color: AppTheme.kGreyShade800),
+                  style: TextStyle(
+                    fontSize: 14,
+                    color: AppTheme.kGreyShade800,
+                    fontWeight: FontWeight.bold, // Make it pop!
+                  ),
                 ),
                 const SizedBox(height: 4),
                 Text(
                   cardData.heading,
                   style: TextStyle(
-                    fontSize: 24,
-                    fontWeight: FontWeight.w800,
-                    color: AppTheme.kGreyShade800,
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white, // White text for contrast
                   ),
                 ),
-                const SizedBox(height: 4),
+                const SizedBox(height: 8),
                 Text(
                   cardData.description,
                   style: TextStyle(
-                    fontSize: 14,
-                    color: AppTheme.kGreyShade800,
+                    fontSize: 12,
+                    color: Colors.white70, // Slightly muted text color
                   ),
                 ),
               ],
