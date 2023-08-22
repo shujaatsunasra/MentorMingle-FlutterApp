@@ -1,10 +1,6 @@
 import 'package:flutter/material.dart';
 import 'pages/home_page.dart';
 import 'theme.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:swipeable_card_stack/swipeable_card_stack.dart';
-
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 void main() {
   runApp(const MyApp());
