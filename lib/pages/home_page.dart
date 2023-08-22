@@ -1,9 +1,9 @@
+// ignore_for_file: library_private_types_in_public_api
+
 import 'package:google_fonts/google_fonts.dart';
 import 'package:slacker/components/appbar.dart';
 import 'package:slacker/components/swipable_card.dart';
-import 'package:swipeable_card_stack/swipe_controller.dart';
 import 'package:flutter/material.dart';
-import 'package:swipeable_card_stack/swipeable_card_stack.dart';
 
 import '../theme.dart';
 
@@ -17,26 +17,20 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  SwipeableCardSectionController _cardController =
-      SwipeableCardSectionController();
   @override
   void initState() {
     super.initState();
-
-    _cardController = SwipeableCardSectionController();
   }
 
   @override
   Widget build(BuildContext context) {
     //? Image List
-    final List<String> imagePaths =
-        List.generate(7, (index) => 'assets/images/${index + 1}.jpg');
 
     final mqh = MediaQuery.of(context).size.height;
     final mqw = MediaQuery.of(context).size.width;
     return SafeArea(
       child: Scaffold(
-        appBar: CustomAppBar(),
+        appBar: const CustomAppBar(),
         body: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 35.0),
           child: Column(

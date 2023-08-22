@@ -1,3 +1,5 @@
+// ignore_for_file: library_private_types_in_public_api, prefer_final_fields
+
 import 'package:flutter/material.dart';
 
 import '../pages/detailed_page.dart';
@@ -6,7 +8,7 @@ import '../theme.dart';
 class SwipableCardStackWidget extends StatefulWidget {
   final List<CardData> cardDataList;
 
-  SwipableCardStackWidget({required this.cardDataList});
+  const SwipableCardStackWidget({super.key, required this.cardDataList});
 
   @override
   _SwipableCardStackWidgetState createState() =>
@@ -28,9 +30,9 @@ class _SwipableCardStackWidgetState extends State<SwipableCardStackWidget> {
 
   void _animateEntrance() async {
     for (int i = 0; i < widget.cardDataList.length; i++) {
-      await Future.delayed(Duration(milliseconds: 300));
+      await Future.delayed(const Duration(milliseconds: 300));
       _pageController.nextPage(
-        duration: Duration(milliseconds: 500),
+        duration: const Duration(milliseconds: 500),
         curve: Curves.easeInOut,
       );
     }
@@ -40,10 +42,10 @@ class _SwipableCardStackWidgetState extends State<SwipableCardStackWidget> {
     if (!_isAnimating) {
       _isAnimating = true;
       _pageController.nextPage(
-        duration: Duration(milliseconds: 300),
+        duration: const Duration(milliseconds: 300),
         curve: Curves.easeInOut,
       );
-      Future.delayed(Duration(milliseconds: 300), () {
+      Future.delayed(const Duration(milliseconds: 300), () {
         setState(() {
           currentIndex = (currentIndex + 1) % widget.cardDataList.length;
           _isAnimating = false;
@@ -96,7 +98,8 @@ class _SwipableCardStackWidgetState extends State<SwipableCardStackWidget> {
 class CardItem extends StatelessWidget {
   final CardData cardData;
 
-  CardItem({
+  const CardItem({
+    super.key,
     required this.cardData,
   });
 
@@ -104,7 +107,7 @@ class CardItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       elevation: 0,
-      shape: BeveledRectangleBorder(
+      shape: const BeveledRectangleBorder(
           borderRadius: BorderRadius.only(bottomRight: Radius.circular(85))),
       color: Colors.white60,
       child: Column(
@@ -117,7 +120,7 @@ class CardItem extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: EdgeInsets.all(8),
+            padding: const EdgeInsets.all(8),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -125,7 +128,7 @@ class CardItem extends StatelessWidget {
                   cardData.subHeading,
                   style: TextStyle(fontSize: 16, color: AppTheme.kGreyShade800),
                 ),
-                SizedBox(height: 4),
+                const SizedBox(height: 4),
                 Text(
                   cardData.heading,
                   style: TextStyle(
@@ -134,7 +137,7 @@ class CardItem extends StatelessWidget {
                     color: AppTheme.kGreyShade800,
                   ),
                 ),
-                SizedBox(height: 4),
+                const SizedBox(height: 4),
                 Text(
                   cardData.description,
                   style: TextStyle(

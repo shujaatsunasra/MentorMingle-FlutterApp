@@ -6,7 +6,7 @@ import '../components/swipable_card.dart';
 class DetailPage extends StatelessWidget {
   final CardData cardData;
 
-  DetailPage({required this.cardData});
+  const DetailPage({super.key, required this.cardData});
 
   @override
   Widget build(BuildContext context) {
@@ -68,7 +68,7 @@ class DetailPage extends StatelessWidget {
                   decoration: BoxDecoration(
                       color: AppTheme.kPrimaryColor,
                       borderRadius: BorderRadius.circular(8)),
-                  child: Center(
+                  child: const Center(
                       child: Text(
                     'Enroll Now',
                     style: TextStyle(

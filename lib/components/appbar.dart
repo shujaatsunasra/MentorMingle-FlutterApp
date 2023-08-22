@@ -7,6 +7,8 @@ import 'package:google_fonts/google_fonts.dart';
 import '../theme.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
+  const CustomAppBar({super.key});
+
   @override
   Widget build(BuildContext context) {
     return AppBar(
