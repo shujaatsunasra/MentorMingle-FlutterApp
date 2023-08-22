@@ -4,6 +4,7 @@
 # MentorMingle
 
 A Flutter app designed to help you find mentors to hone your skills. This repository showcases the app's mesmerizing UI and captivating animations.
+
 <img src="https://github.com/shujaatsunasra/MentorMingle-FlutterApp/blob/main/assets/images/Group%204.png?raw=true" alt="Presentation Image Alt Text" width="800">
 ## Getting Started
 
